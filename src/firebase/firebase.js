@@ -1,4 +1,4 @@
-const firebase = require('firebase/app');
+const firebase =  require('firebase/app');
 require('firebase/auth');
 require('firebase/firestore');
 
@@ -13,12 +13,14 @@ const firebaseConfig = {
   measurementId: 'G-LMDX9BKGZC',
 };
 
-firebase.initializeApp(firebaseConfig);
+let initialize = firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
-export const googleAuth = firebase.auth.GoogleAuthProvider();
-export const facebookAuth = firebase.auth.FacebookAuthProvider();
-export const twitterAuth = firebase.auth.TwitterAuthProvider();
+export const googleAuth = new firebase.auth.GoogleAuthProvider();
+export const facebookAuth = new firebase.auth.FacebookAuthProvider();
+export const twitterAuth = new firebase.auth.TwitterAuthProvider();
+
+export const database = firebase.firestore(initialize);
 
 export const PersistanceLocal = firebase.auth.Auth.Persistence.LOCAL;
 export const PersistanceSession = firebase.auth.Auth.Persistence.SESSION;
